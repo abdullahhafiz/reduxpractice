@@ -1,15 +1,16 @@
 import * as actionType from './Constants';
 
 const initialState = {
-    increment: 0,
-    decrement: 0,
+    increment: parseInt(0),
+    decrement: parseInt(0),
     Loading: false
 }
 
 
 const incrementReducer = (state = initialState, action) => {
-    const { Type, payload } = action;
-    if (Type === actionType.SET_INCREMENT) {
+    const { type, payload } = action;
+    if (type === actionType.SET_INCREMENT) {
+        console.log("Increment Reducer Called: ",payload);
         return {
             ...state,
             Loading: false,
@@ -17,7 +18,8 @@ const incrementReducer = (state = initialState, action) => {
 
         }
     }
-    else if (Type === actionType.SET_DECREMENT) {
+    else if (type === actionType.SET_DECREMENT) {
+        console.log('Decrement Reducer Callled :', payload);
         return {
             ...state,
             Loading: false,

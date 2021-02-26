@@ -1,55 +1,35 @@
 
-import React, { useState } from 'react';
-import { Buttons } from './Components/Buttons';
+// import React, { useState } from 'react';
 import { LabelCounter } from './Components/label';
 import { ListOfDecrement } from './Components/ListOfDecrement';
 import { ListOfIncrement } from './Components/ListOfincrement';
 import { Provider } from "react-redux";
 import  store  from "./store/store"
+import Buttons from './Components/Buttons';
 
-function App() {
-
-  let [increment, setIncrement] = useState(0);
-  let [decrement, setDecrement] = useState(0);
-  let [listOfIncrement, setListOfIncrement] = useState([]);
-  let [listOfDecrement, setListOfDecrement] = useState([]);
-  // const [labelNumber, setLabelNumber]= useState();
-
-  function onClickIncrement() {
-    let incrementHistory = []
-    increment += 1;
-    incrementHistory.push(increment);
-    setListOfIncrement(incrementHistory);
-    setIncrement(increment);
-    console.log('Increment Value', increment);
-  }
-
-  function onClickDecrement() {
-    let decrementHistory = [];
-    decrement -= 1;
-    decrementHistory.push(decrement);
-    setListOfDecrement(decrementHistory);
-    setDecrement(decrement);
-    console.log('Decrement Value', decrement);
-  }
-
-
+function App({xyz, abc}) {
   return (
     <Provider store={store}>
       <div className="App">
         <LabelCounter />
-        <Buttons
-          onClickIncrement={onClickIncrement}
-          onClickDecrement={onClickDecrement} />
-        <ListOfIncrement
-          listOfIncrement={listOfIncrement} />
+        <Buttons />
+        <ListOfIncrement/>
         <div>
-          <ListOfDecrement
-            listOfDecrement={listOfDecrement} />
+          <ListOfDecrement />
         </div>
       </div>
     </Provider>
   );
+  
 }
+// const mapDispatchToProps = (dispatch) => {
+  // xyz:xyz
+//   return {
 
+//     increment: () => dispatch({ type: 'INCREMENT' }),
+//     decrement: () => dispatch({ type: 'DECREMENT' }),
+//   }
+// }
+
+// export default connect(abc, mapDispatchToProps)(App);
 export default App;
