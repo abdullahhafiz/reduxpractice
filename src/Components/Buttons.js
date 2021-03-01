@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Increment, Decrement } from '../store/increment/action';
 
-const Buttons = ({Increment, Decrement, increment, decrement}) =>{
+const Buttons = ({Increment, Decrement, increment, show}) =>{
     // let useState;
     // let [increment, setIncrement] = useState(0);
     // let [decrement, setDecrement] = useState(0);
@@ -11,13 +11,13 @@ const Buttons = ({Increment, Decrement, increment, decrement}) =>{
     // const [labelNumber, setLabelNumber]= useState();
   
     function onClickIncrement() {
-        const data = increment +1;
-    Increment(data);
-      console.log('Increment Value');
+        const data = parseInt(increment.increment + 1 );
+        Increment(data);
+    //   console.log('Increment Value ', incData.increment);
     }
   
     function onClickDecrement() {
-        const data = decrement - 1;
+        const data = parseInt(increment.increment - 1);
         Decrement(data);
         console.log('Decrement Value');
 
@@ -51,7 +51,7 @@ const mapDispatchToProps =  {
    
   }
   const mapState = (state) => ({   
-    increment: state.setIncrement,
-    decrement: state.setDecrement
+    increment: state.increment,
+    show: state.showMyData,
   })
   export default connect(mapState, mapDispatchToProps)(Buttons);

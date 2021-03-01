@@ -1,8 +1,8 @@
 import * as actionType from './Constants';
 
 const initialState = {
-    increment: parseInt(0),
-    decrement: parseInt(0),
+    increment: 0,
+    decrement: 0,
     Loading: false
 }
 
@@ -23,9 +23,19 @@ const incrementReducer = (state = initialState, action) => {
         return {
             ...state,
             Loading: false,
-            decrement: payload
+            increment: payload
         }
     }
+
+    else if (type === actionType.SHOW_MY_DATA) {
+        console.log('Show Data Reducer Callled :', payload);
+        return {
+            ...state,
+            Loading: false,
+            showMyData: payload
+        }
+    }
+
     return state;
 }
 
