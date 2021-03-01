@@ -28,7 +28,6 @@ const incrementReducer = (state = initialState, action) => {
     }
 
     else if (type === actionType.SHOW_MY_DATA) {
-        console.log('Show Data Reducer Callled :', payload);
         return {
             ...state,
             Loading: false,

@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Increment, Decrement } from '../store/increment/action';
+import { Increment, Decrement, ShowMyData } from '../store/increment/action';
 
-const Buttons = ({Increment, Decrement, increment, show}) =>{
+const Buttons = ({Increment, Decrement, increment, ShowMyData}) =>{
     // let useState;
     // let [increment, setIncrement] = useState(0);
     // let [decrement, setDecrement] = useState(0);
     // let [setListOfIncrement] = useState([]);
     // let [setListOfDecrement] = useState([]);
     // const [labelNumber, setLabelNumber]= useState();
-  
+    useEffect(()=>{
+            ShowMyData(); 
+    },[])
     function onClickIncrement() {
         const data = parseInt(increment.increment + 1 );
         Increment(data);
-    //   console.log('Increment Value ', incData.increment);
     }
   
     function onClickDecrement() {
         const data = parseInt(increment.increment - 1);
         Decrement(data);
-        console.log('Decrement Value');
 
     //   let decrementHistory = [];
     //   decrement -= 1;
@@ -48,10 +48,12 @@ const Buttons = ({Increment, Decrement, increment, show}) =>{
 const mapDispatchToProps =  {    
       Increment: Increment,
       Decrement: Decrement,
+      ShowMyData: ShowMyData,
+
    
   }
   const mapState = (state) => ({   
     increment: state.increment,
-    show: state.showMyData,
+    // show: state.showMyData,
   })
   export default connect(mapState, mapDispatchToProps)(Buttons);

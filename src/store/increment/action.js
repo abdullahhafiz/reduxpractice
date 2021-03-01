@@ -9,7 +9,6 @@ export function Decrement(payload){
     console.log('Decrement here........', payload);
     return {type: SET_DECREMENT , payload:payload}
 }
-export function ShowMyComponent(payload){
-    console.log('Display here: ', payload);
+export function ShowMyData(payload){
     return {type: SHOW_MY_DATA, payload:payload}
 }
