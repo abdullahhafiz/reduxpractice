@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import FormData  from '../pages/formPage';
 import { Increment, Decrement, ShowMyData } from '../store/increment/action';
 
 const Buttons = ({Increment, Decrement, increment, ShowMyData}) =>{
@@ -10,7 +11,7 @@ const Buttons = ({Increment, Decrement, increment, ShowMyData}) =>{
     // let [setListOfDecrement] = useState([]);
     // const [labelNumber, setLabelNumber]= useState();
     useEffect(()=>{
-            ShowMyData(); 
+           ShowMyData(); 
     },[])
     function onClickIncrement() {
         const data = parseInt(increment.increment + 1 );
@@ -28,10 +29,17 @@ const Buttons = ({Increment, Decrement, increment, ShowMyData}) =>{
     //   setDecrement(decrement);
     //   console.log('Decrement Value', decrement);
     }
+
+
     return(
         <div>
             <button className="button" onClick = {onClickIncrement}>Increment:</button>
             <button className="button" onClick = {onClickDecrement}>Decrement:</button>
+            <p>
+                Number:  
+                    {increment.increment}
+            </p>
+            <FormData />
 
             {/* <button className="button" onClick = {()=>dispatch({type: 'INCREMENT'})}>Increment:</button>
             <button className="button" onClick = {()=>dispatch({type: 'DECREMENT'})}>Decrement:</button> */}
@@ -49,11 +57,10 @@ const mapDispatchToProps =  {
       Increment: Increment,
       Decrement: Decrement,
       ShowMyData: ShowMyData,
-
    
   }
   const mapState = (state) => ({   
     increment: state.increment,
-    // show: state.showMyData,
+    show: state.showMyData,
   })
   export default connect(mapState, mapDispatchToProps)(Buttons);
