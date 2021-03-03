@@ -24,7 +24,7 @@ const formDataShow = (state = formInitialState, action)=>{
                 payload.userName,
                 payload.email,
                 payload.contact
-            ]
+            ].splice(0,3)
         }
     }
     else if(type === actionType.UPDATE_DATA){
@@ -33,6 +33,27 @@ const formDataShow = (state = formInitialState, action)=>{
             Loading: true,
             data: payload,
             email: payload.email
+        }
+    }
+
+    else if(type === actionType.DELETE_DATA){
+        let temp = state.dataArray.filter((item , i) => {
+            if(i != payload){
+            return item
+        }
+        })
+        console.log('>>>>>>>>>>>>> deleted data\n\t', temp);
+        return {
+            ...state,
+            Loading:false,
+            dataArray: temp
+            // ].map.filter('dataArray', (dataArray)=>{
+            //     let tempData = dataArray.filter(item , i) => {
+            //         if(i!==payload)
+            //         return item
+            //     })
+            //     return tempData;
+            // })
         }
     }
     return state;
