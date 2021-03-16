@@ -67,9 +67,9 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
             <form>
                 User Name:<input id = 'usrInput' type='text' name="userName" value={userName} onChange={(e) => { onChange(e) }}></input><br />
 
-            Email:<input type='text' name='email' value={email} onChange={(e) => { onChange(e) }}></input><br />
+            Email:<input id = 'emlInput' type='text' name='email' value={email} onChange={(e) => { onChange(e) }}></input><br />
 
-            Contact:<input type='text' name='contact' value={contact} onChange={(e) => { onChange(e) }}></input><br />
+            Contact:<input id = 'cntctInput' type='text' name='contact' value={contact} onChange={(e) => { onChange(e) }}></input><br />
 
                 <button type='button' onClick={onClickSubmit}>Submit :</button>
                 <button type='button' onClick={onClickSubmitToUpdate}>Submit To Update :</button><br />
