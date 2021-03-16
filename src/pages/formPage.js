@@ -64,7 +64,7 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
 
     return (
         <div>
-            <form>
+            <form id = 'form'>
                 User Name:<input id = 'nameInput' type='text' name="userName" value={userName} onChange={(e) => { onChange(e) }}></input><br />
 
             Email:<input id = 'emlInput' type='text' name='email' value={email} onChange={(e) => { onChange(e) }}></input><br />

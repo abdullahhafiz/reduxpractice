@@ -30,10 +30,16 @@ describe('My First Test', () => {
         cy.pause()
         cy.contains('Contact')
         cy.get('input[name = contact]').type('03060812120')
-            
-        // cy.contains('Email')
-        // cy.contains('Contact')
-        // cy.contains('Submit').click()
+
+        cy.pause()
+        cy.contains('Submit').click()
+        it('after Submit Clicked this will work', ()=>{
+            cy.visit('')
+            cy.get('select').select('Submit')
+            // cy.get('input').type('Abdullah')
+        })
+        // cy.get('#form').submit()
+        
         // cy.contains('Submit To Update').click()
         // cy.contains('Delete').click()
         // cy.contains('Delete Object Button').click()
