@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { deleteData, SubmitData, updateData } from '../store/increment/action';
+import { deleteData, deleteObjectData, SubmitData, updateData } from '../store/increment/action';
 
-const FormData = ({ SubmitData, updateData , submitData, deleteData}) => {
+const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDataObject, newFormDataArray, deleteObjectData}) => {
         const [onDelteIndex, setDeleteIndex] = useState(0);
         function onDelete(index){
 
             setDeleteIndex(index);
-
         }
+
+        // const [onDeleteObject, setDeleteObject]= useState();
+        // function onDeleteDataObject(object){
+        //     setDeleteObject(object)
+        // }
     const [formData, setFormData] = useState({
         userName: '',
         email: '',
@@ -30,7 +34,7 @@ const FormData = ({ SubmitData, updateData , submitData, deleteData}) => {
     }
     function onClickSubmit() {
         SubmitData(formData);
-        console.log('Here Submit');
+        console.log('Here Submit', );
         
     }
     function onClickSubmitToUpdate(){
@@ -45,14 +49,23 @@ const FormData = ({ SubmitData, updateData , submitData, deleteData}) => {
         // if(index > -1){
         //     dataArray.splice(index, 1)
         // }
+        // if(newFormData.data.userName === undefined || newFormData.data.userName === null){
+        //     deleteData(onDelteIndex);
+        // }
         console.log('Delete called');
         deleteData(onDelteIndex);
     }
+    function onClickObjectDelete(){
+        console.log('Object Delete Called');
+        deleteObjectData(formData);
+    }
+
+    // console.log('state is >>>>>>.', newFormData.data);
 
     return (
         <div>
             <form>
-                User Name:<input type='text' name="userName" value={userName} onChange={(e) => { onChange(e) }}></input><br />
+                User Name:<input id = 'usrInput' type='text' name="userName" value={userName} onChange={(e) => { onChange(e) }}></input><br />
 
             Email:<input type='text' name='email' value={email} onChange={(e) => { onChange(e) }}></input><br />
 
@@ -67,31 +80,45 @@ const FormData = ({ SubmitData, updateData , submitData, deleteData}) => {
             <input type = 'text' value={onDelteIndex} name={onDelteIndex} onChange = {(e)=>{onDelete(e.target.value)}}></input>
                 <button type='button' onClick={onClickDelete}>Delete :</button>
             </div>
+            <div>
+            <button type='button' onClick={onClickObjectDelete}>Delete Object Button :</button>
+            </div>
             <ul>
-                {submitData.userName}<br />
-                {submitData.email}<br />
-                {submitData.contact}<br />
-                {/* {submit.submit} */}
+                {newFormData.userName}<br />
+                {newFormData.email}<br />
+                {newFormData.contact}<br />
             </ul>
-            <ul>
-                <p><h1>Data By Object </h1></p>
-                {submitData.data.userName}<br />
-                {submitData.data.email}<br />
-                {submitData.data.contact}
-            </ul>
-                <ul>
+
+            
+        <ul>
+        <p><h1>Data By Object </h1></p>
+        {newFormDataObject.data.userName}<br />
+        {newFormDataObject.data.email}<br />
+        {newFormDataObject.data.contact}
+    </ul>
+    
+        <ul>
                     <p><h1>Data By Array</h1></p>
                     {
+                            // newFormData.dataArray.map((itemArray, i) => {
+                            //     <ul key={i}>
+                            //     <p><h1>Data By Array </h1></p>
+                            //     {itemArray.userName}<br />
+                            //     {itemArray.email}<br />
+                            //     {itemArray.contact}
+                            // </ul>
+                            // })
+
+                        // console.log("_____________\n",newFormData.dataArray)
+                        //  newFormData.dataArray.map((item, i) => {
+                        //      console.log('item \n', item);
+                        //     // return <ul key={i}>{item}</ul> 
+                        // })
                         
-                        submitData.dataArray.map((number, i)=>{
+                        newFormDataArray.dataArray.map((number, i)=>{
                             return <ul key={i}>{number}</ul>
                         })
                     }
-                </ul>
-
-                <ul>
-                    <p><h1>Deleted Data</h1></p>
-
                 </ul>
 
         </div>
@@ -101,11 +128,14 @@ const FormData = ({ SubmitData, updateData , submitData, deleteData}) => {
 const mapDispatchToProps = {
     SubmitData: SubmitData,
     updateData: updateData,
-    deleteData: deleteData
+    deleteData: deleteData,
+    deleteObjectData: deleteObjectData,
 
 }
 const mapState = (state) => ({
 
-    submitData: state.formData,
+    newFormData: state.formData,
+    newFormDataObject: state.formData,
+    newFormDataArray: state.formData
 })
 export default connect(mapState, mapDispatchToProps)(FormData);

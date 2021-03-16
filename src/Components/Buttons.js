@@ -33,9 +33,9 @@ const Buttons = ({Increment, Decrement, increment, ShowMyData}) =>{
 
     return(
         <div>
-            <button className="button" onClick = {onClickIncrement}>Increment:</button>
-            <button className="button" onClick = {onClickDecrement}>Decrement:</button>
-            <p>
+            <button id = 'incBtn'className="button" onClick = {onClickIncrement}>Increment:</button>
+            <button id = 'decBtn' className="button" onClick = {onClickDecrement}>Decrement:</button>
+            <p id="result">
                 Number:  
                     {increment.increment}
             </p>

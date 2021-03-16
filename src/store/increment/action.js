@@ -1,4 +1,4 @@
-import { DELETE_DATA, SET_DECREMENT, SET_INCREMENT, SHOW_MY_DATA, SUBMIT_DATA, UPDATE_DATA } from "./Constants";
+import { DELETE_DATA, DELETE_OBJECT_DATA, SET_DECREMENT, SET_INCREMENT, SHOW_MY_DATA, SUBMIT_DATA, UPDATE_DATA } from "./Constants";
 
 export const Increment = (payload) => {
     console.log('Increment here........', payload);
@@ -29,6 +29,13 @@ export const updateData = (payload) => {
 export const deleteData = (payload)=>{
     return {
         type: DELETE_DATA,
+        payload: payload
+    }
+}
+
+export const deleteObjectData = (payload)=>{
+    return {
+        type: DELETE_OBJECT_DATA,
         payload: payload
     }
 }
