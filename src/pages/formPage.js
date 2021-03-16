@@ -71,8 +71,8 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
 
             Contact:<input id = 'cntctInput' type='text' name='contact' value={contact} onChange={(e) => { onChange(e) }}></input><br />
 
-                <button type='button' onClick={onClickSubmit}>Submit :</button>
-                <button type='button' onClick={onClickSubmitToUpdate}>Submit To Update :</button><br />
+                <button id = 'btnSbmt' type='button' onClick={onClickSubmit}>Submit :</button>
+                <button id = 'btnSbmtUpdate' type='button' onClick={onClickSubmitToUpdate}>Submit To Update :</button><br />
 
                 
             </form>

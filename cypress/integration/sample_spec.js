@@ -21,16 +21,16 @@ describe('My First Test', () => {
         cy.pause()
 
         cy.contains('User Name')
-        cy.get('nameInput').contains('Abdulllah')
-            .should('have.value', 'Abdullah')
+        cy.get('input[name = userName]').type('Abdullah')
+            
         cy.pause()
         cy.contains('Email')
-        cy.get('emlInput').contains('abdullahhafiz1997@gmail.com')
-            .should('have.value', 'abdullahhafiz1997@gmail.com')
-
+        cy.get('input[name = email]').type('abdullahhafiz1997@gmail.com')
+            
+        cy.pause()
         cy.contains('Contact')
-        cy.get('cntctInput').contains('03060812120')
-            .should('have.value', '03060812120')
+        cy.get('input[name = contact]').type('03060812120')
+            
         // cy.contains('Email')
         // cy.contains('Contact')
         // cy.contains('Submit').click()
