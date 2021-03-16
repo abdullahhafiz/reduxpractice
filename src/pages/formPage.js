@@ -83,21 +83,21 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
             <div>
             <button id = 'objdlteBtn' type='button' onClick={onClickObjectDelete}>Delete Object Button :</button>
             </div>
-            <ul>
+            <ul id = 'singleDtaLst'>
                 {newFormData.userName}<br />
                 {newFormData.email}<br />
                 {newFormData.contact}<br />
             </ul>
 
             
-        <ul>
+        <ul id = 'objLst'>
         <p><h1>Data By Object </h1></p>
         {newFormDataObject.data.userName}<br />
         {newFormDataObject.data.email}<br />
         {newFormDataObject.data.contact}
     </ul>
     
-        <ul>
+        <ul id = 'arrLst'>
                     <p><h1>Data By Array</h1></p>
                     {
                             // newFormData.dataArray.map((itemArray, i) => {

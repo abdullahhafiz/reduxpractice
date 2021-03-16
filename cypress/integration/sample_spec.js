@@ -36,7 +36,7 @@ describe('My First Test', () => {
         it('after Submit Clicked this will work', ()=>{
             cy.visit('')
             cy.get('select').select('Submit')
-            // cy.get('input').type('Abdullah')
+            
         })
         // cy.get('#form').submit()
         
