@@ -79,26 +79,25 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
             <div>
             <input id = 'dlteInput' type = 'text' value={onDelteIndex} name={onDelteIndex} onChange = {(e)=>{onDelete(e.target.value)}}></input>
                 <button id = 'dlteBtn' type='button' onClick={onClickDelete}>Delete :</button>
-            </div>
+               </div>
             <div>
             <button id = 'objdlteBtn' type='button' onClick={onClickObjectDelete}>Delete Object Button :</button>
             </div>
-            <ul id = 'singleDtaLst'>
-                {newFormData.userName}<br />
-                {newFormData.email}<br />
-                {newFormData.contact}<br />
-            </ul>
-
-            
-        <ul id = 'objLst'>
+                <ul id = 'dataLst'>
+                    <li>{newFormData.userName}</li>
+                    <li>{newFormData.email}</li>
+                    <li>{newFormData.contact}</li>
+                </ul>
         <p><h1>Data By Object </h1></p>
-        {newFormDataObject.data.userName}<br />
-        {newFormDataObject.data.email}<br />
-        {newFormDataObject.data.contact}
-    </ul>
+        <ul id = 'objData'>
+        <li>{newFormDataObject.data.userName}</li>
+        <li>{newFormDataObject.data.email}</li>
+        <li>{newFormDataObject.data.contact}</li>
+        </ul>
     
-        <ul id = 'arrLst'>
+        
                     <p><h1>Data By Array</h1></p>
+                    <ul id = 'arrData'>
                     {
                             // newFormData.dataArray.map((itemArray, i) => {
                             //     <ul key={i}>
@@ -120,7 +119,6 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
                         })
                     }
                 </ul>
-
         </div>
     )
 }
