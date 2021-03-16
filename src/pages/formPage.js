@@ -65,7 +65,7 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
     return (
         <div>
             <form>
-                User Name:<input id = 'usrInput' type='text' name="userName" value={userName} onChange={(e) => { onChange(e) }}></input><br />
+                User Name:<input id = 'nameInput' type='text' name="userName" value={userName} onChange={(e) => { onChange(e) }}></input><br />
 
             Email:<input id = 'emlInput' type='text' name='email' value={email} onChange={(e) => { onChange(e) }}></input><br />
 
@@ -77,11 +77,11 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
                 
             </form>
             <div>
-            <input id = 'dlteInput'type = 'text' value={onDelteIndex} name={onDelteIndex} onChange = {(e)=>{onDelete(e.target.value)}}></input>
+            <input id = 'dlteInput' type = 'text' value={onDelteIndex} name={onDelteIndex} onChange = {(e)=>{onDelete(e.target.value)}}></input>
                 <button id = 'dlteBtn' type='button' onClick={onClickDelete}>Delete :</button>
             </div>
             <div>
-            <button id = 'objdlteBtn'type='button' onClick={onClickObjectDelete}>Delete Object Button :</button>
+            <button id = 'objdlteBtn' type='button' onClick={onClickObjectDelete}>Delete Object Button :</button>
             </div>
             <ul>
                 {newFormData.userName}<br />
