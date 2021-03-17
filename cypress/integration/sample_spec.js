@@ -27,7 +27,37 @@ describe('My First Test', () => {
 
         cy.get('#result').contains('-1')
     })
-  
+
+    it('Check if input box contains the same values that are entered', () => {
+        cy.contains('User Name')
+        cy.get('input[name = userName]').type('Abdullah')
+
+        cy.contains('Email')
+        cy.get('input[name = email]').type('abdullahhafiz1997@gmail.com')
+
+        cy.contains('Contact')
+        cy.get('input[name = contact]').type('03060812120')
+
+
+        cy.get('input[name="email"]')
+            .invoke('val')
+            .then(sometext =>
+                expect(sometext).to.equal('abdullahhafiz1997@gmail.com'))
+
+        cy.get('input[name = userName]')
+            .invoke('val')
+            .then(sometext =>
+                expect(sometext).to.equal('Abdullah'))
+
+        cy.get('input[name = contact]')
+            .invoke('val')
+            .then(sometext =>
+                expect(sometext).to.equal('03060812120'))
+
+    })
+    it('Check if form is submitted', () => {
+        cy.contains('Submit').click()
+    })
     it("Test if main div contains the desired output", () => {
 
         cy.get('#dataLst li')
@@ -83,7 +113,7 @@ describe('My First Test', () => {
         cy.get('input[name = userName]').clear()
         cy.get('input[name = email]').clear()
         cy.get('input[name = contact]').clear()
-    })
+    }) 
     it('Check if input box contains the same values to Update', () => {
         cy.contains('User Name')
         cy.get('input[name = userName]').type('Zia')
