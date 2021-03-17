@@ -1,13 +1,24 @@
 /* eslint-disable no-undef */
 
 describe('My First Test', () => {
+
+    before(() => {
+        //increment
+        cy.visit('http://localhost:3000/')
+        cy.contains('Increment').click()
+        cy.get('#result').contains('1')
+        //Decrement 
+        cy.visit('http://localhost:3000/')
+        cy.contains('Decrement').click()
+        cy.get('#result').contains('-1')
+    })
+
     it('Check the increment', () => {
         cy.visit('http://localhost:3000/')
 
         cy.contains('Increment').click()
 
         cy.get('#result').contains('1')
-
     })
     it('Check the decrement', () => {
         cy.visit('http://localhost:3000/')
@@ -16,38 +27,7 @@ describe('My First Test', () => {
 
         cy.get('#result').contains('-1')
     })
-    it('Check if input box contains the same values that are entered', () => {
-        cy.contains('User Name')
-        cy.get('input[name = userName]').type('Abdullah')
-
-        cy.contains('Email')
-        cy.get('input[name = email]').type('abdullahhafiz1997@gmail.com')
-
-        cy.contains('Contact')
-        cy.get('input[name = contact]').type('03060812120')
-
-
-        cy.get('input[name="email"]')
-            .invoke('val')
-            .then(sometext =>
-                expect(sometext).to.equal('abdullahhafiz1997@gmail.com'))
-
-        cy.get('input[name = userName]')
-            .invoke('val')
-            .then(sometext =>
-                expect(sometext).to.equal('Abdullah'))
-
-        cy.get('input[name = contact]')
-            .invoke('val')
-            .then(sometext =>
-                expect(sometext).to.equal('03060812120'))
-
-    })
-
-    it('Check if form is submitted', () => {
-        cy.contains('Submit').click()
-        
-    })
+  
     it("Test if main div contains the desired output", () => {
 
         cy.get('#dataLst li')
@@ -93,12 +73,18 @@ describe('My First Test', () => {
         })
     })
 
-    it ('Clear the Data Present In Input Field', ()=>{
+
+    it('Clear the Data Present In Input Field', () => {
         cy.get('input[name = userName]').clear()
         cy.get('input[name = email]').clear()
         cy.get('input[name = contact]').clear()
     })
-    it('Check if input box contains the same different values to Update', () => {
+    after(() => {
+        cy.get('input[name = userName]').clear()
+        cy.get('input[name = email]').clear()
+        cy.get('input[name = contact]').clear()
+    })
+    it('Check if input box contains the same values to Update', () => {
         cy.contains('User Name')
         cy.get('input[name = userName]').type('Zia')
 
@@ -160,20 +146,20 @@ describe('My First Test', () => {
             expect($div.get(2).innerText).to.eq('123456789')
         })
     })
-    it("Delete The Data Present In Data By Object Div", ()=>{
+    it("Delete The Data Present In Data In Object Div", () => {
         cy.contains('Delete Object Button').click()
         cy.clearLocalStorage()
     })
 
-    // it("Delete The Data Present In Array", ()=>{
+    // it("Delete The Data Present In Array", () => {
     //     cy.contains('Delete Input')
     //     // cy.get('input[name = onDelteIndex]').type('1')
     //     cy.contains('Delete').click()
-    //     cy.clearLocalStorage(/prop1|2/).then((ls) => {
-    //         expect(ls.getItem('userName')).to.be.null
-    //         expect(ls.getItem('email')).to.be.null
-    //         expect(ls.getItem('contact')).to.eq('abdullahhafiz1997@gmail.com')
-    //       })
+    //     // cy.clearLocalStorage(/prop1|2/).then((ls) => {
+    //     //     expect(ls.getItem('userName')).to.be.null
+    //     //     expect(ls.getItem('email')).to.be.null
+    //     //     expect(ls.getItem('contact')).to.eq('abdullahhafiz1997@gmail.com')
+    //     //   })
     // })
 })
 
