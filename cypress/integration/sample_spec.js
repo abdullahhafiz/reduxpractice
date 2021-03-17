@@ -46,8 +46,8 @@ describe('My First Test', () => {
 
     it('Check if form is submitted', () => {
         cy.contains('Submit').click()
+        
     })
-
     it("Test if main div contains the desired output", () => {
 
         cy.get('#dataLst li')
@@ -57,7 +57,6 @@ describe('My First Test', () => {
             .should('be.visible')
 
         cy.get('#dataLst li').should(($div) => {
-            // access the native DOM element
             expect($div.get(0).innerText).to.eq('Abdullah')
             expect($div.get(1).innerText).to.eq('abdullahhafiz1997@gmail.com')
             expect($div.get(2).innerText).to.eq('03060812120')
@@ -73,7 +72,6 @@ describe('My First Test', () => {
             .should('be.visible')
 
         cy.get('#objData li').should(($div) => {
-            // access the native DOM element
             expect($div.get(0).innerText).to.eq('Abdullah')
             expect($div.get(1).innerText).to.eq('abdullahhafiz1997@gmail.com')
             expect($div.get(2).innerText).to.eq('03060812120')
@@ -83,16 +81,83 @@ describe('My First Test', () => {
     it("Test if array data div contains the desired output", () => {
 
         cy.get('#arrData ul')
-            .should('have.length',3)
+            .should('have.length', 3)
 
         cy.get('#arrData ul')
             .should('be.visible')
 
         cy.get('#arrData ul').should(($div) => {
-            // access the native DOM element
             expect($div.get(0).innerText).to.eq('Abdullah')
             expect($div.get(1).innerText).to.eq('abdullahhafiz1997@gmail.com')
             expect($div.get(2).innerText).to.eq('03060812120')
+        })
+    })
+
+    it ('Clear the Data Present In Input Field', ()=>{
+        cy.get('input[name = userName]').clear()
+        cy.get('input[name = email]').clear()
+        cy.get('input[name = contact]').clear()
+    })
+    it('Check if input box contains the same different values to Update', () => {
+        cy.contains('User Name')
+        cy.get('input[name = userName]').type('Zia')
+
+        cy.contains('Email')
+        cy.get('input[name = email]').type('Zia@gmail.com')
+
+        cy.contains('Contact')
+        cy.get('input[name = contact]').type('123456789')
+
+
+        cy.get('input[name = userName]')
+            .invoke('val')
+            .then(sometext =>
+                expect(sometext).to.equal('Zia'))
+
+        cy.get('input[name="email"]')
+            .invoke('val')
+            .then(sometext =>
+                expect(sometext).to.equal('Zia@gmail.com'))
+
+
+        cy.get('input[name = contact]')
+            .invoke('val')
+            .then(sometext =>
+                expect(sometext).to.equal('123456789'))
+
+    })
+
+    it('Check if form is Updated', () => {
+        cy.contains('Submit To Update').click()
+    })
+
+    it("Test if main div contains the Updated output", () => {
+
+        cy.get('#dataLst li')
+            .should('have.length', 3)
+
+        cy.get('#dataLst li')
+            .should('be.visible')
+
+        cy.get('#dataLst li').should(($div) => {
+            expect($div.get(0).innerText).to.eq('Zia')
+            expect($div.get(1).innerText).to.eq('Zia@gmail.com')
+            expect($div.get(2).innerText).to.eq('123456789')
+        })
+    })
+
+    it("Test if data object div contains the Updated output", () => {
+
+        cy.get('#objData li')
+            .should('have.length', 3)
+
+        cy.get('#objData li')
+            .should('be.visible')
+
+        cy.get('#objData li').should(($div) => {
+            expect($div.get(0).innerText).to.eq('Zia')
+            expect($div.get(1).innerText).to.eq('Zia@gmail.com')
+            expect($div.get(2).innerText).to.eq('123456789')
         })
     })
 })
