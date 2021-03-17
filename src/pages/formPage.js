@@ -33,13 +33,9 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
         })
     }
     function onClickSubmit() {
-        SubmitData(formData);
-        console.log('Here Submit', );
-        
+        SubmitData(formData);        
     }
     function onClickSubmitToUpdate(){
-    
-        console.log('update Submit called');
         updateData(formData);
     }
     function onClickDelete(){
@@ -59,9 +55,6 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
         console.log('Object Delete Called');
         deleteObjectData(formData);
     }
-
-    // console.log('state is >>>>>>.', newFormData.data);
-
     return (
         <div>
             <form id = 'form'>
