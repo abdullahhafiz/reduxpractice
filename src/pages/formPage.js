@@ -70,7 +70,7 @@ const FormData = ({ SubmitData, updateData , newFormData, deleteData, newFormDat
                 
             </form>
             <div>
-            <input id = 'dlteInput' type = 'text' value={onDelteIndex} name={onDelteIndex} onChange = {(e)=>{onDelete(e.target.value)}}></input>
+            Delete Input:<input id = 'dlteInput' type = 'text' value={onDelteIndex} name={onDelteIndex} onChange = {(e)=>{onDelete(e.target.value)}}></input>
                 <button id = 'dlteBtn' type='button' onClick={onClickDelete}>Delete :</button>
                </div>
             <div>

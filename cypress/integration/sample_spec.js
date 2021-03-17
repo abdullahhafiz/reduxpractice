@@ -160,5 +160,15 @@ describe('My First Test', () => {
             expect($div.get(2).innerText).to.eq('123456789')
         })
     })
+    it("Delete The Data Present In Data By Object Div", ()=>{
+        cy.contains('Delete Object Button').click()
+        cy.clearLocalStorage()
+    })
+
+    it("Delete The Data Present In Array", ()=>{
+        cy.contains('Delete Input')
+        // cy.get('input[name = onDelteIndex]').type('1')
+        cy.contains('Delete').click()
+    })
 })
 
