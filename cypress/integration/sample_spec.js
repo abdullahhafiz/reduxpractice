@@ -165,15 +165,15 @@ describe('My First Test', () => {
         cy.clearLocalStorage()
     })
 
-    it("Delete The Data Present In Array", ()=>{
-        cy.contains('Delete Input')
-        // cy.get('input[name = onDelteIndex]').type('1')
-        cy.contains('Delete').click()
-        cy.clearLocalStorage(/prop1|2/).then((ls) => {
-            expect(ls.getItem('userName')).to.be.null
-            expect(ls.getItem('email')).to.be.null
-            expect(ls.getItem('contact')).to.eq('abdullahhafiz1997@gmail.com')
-          })
-    })
+    // it("Delete The Data Present In Array", ()=>{
+    //     cy.contains('Delete Input')
+    //     // cy.get('input[name = onDelteIndex]').type('1')
+    //     cy.contains('Delete').click()
+    //     cy.clearLocalStorage(/prop1|2/).then((ls) => {
+    //         expect(ls.getItem('userName')).to.be.null
+    //         expect(ls.getItem('email')).to.be.null
+    //         expect(ls.getItem('contact')).to.eq('abdullahhafiz1997@gmail.com')
+    //       })
+    // })
 })
 
