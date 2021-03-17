@@ -57,6 +57,18 @@ describe('Submit Test Case', () => {
         cy.contains('Submit').click()
     })
     it('Check if form is submitted', () => {
-        // cy.contains('Submit').click()
+        cy.contains('Submit').click()
+    })
+
+    after(() => {
+        cy.get('input[name = userName]').clear()
+        cy.get('input[name = email]').clear()
+        cy.get('input[name = contact]').clear()
+    })
+
+    it('Clear the Data Present In Input Field', () => {
+        // cy.get('input[name = userName]').clear()
+        // cy.get('input[name = email]').clear()
+        // cy.get('input[name = contact]').clear()
     })
 })
